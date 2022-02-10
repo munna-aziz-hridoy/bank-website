@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account - Bank Jamuna</title>
+
+    <!-- tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- main css  -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- main js -->
+    <script src="script.js" defer></script>
+  </head>
+  <body class="w-screen h-screen bg-green-100">
+    <header>
+      <h1 class="text-center text-4xl font-bold my-8">Account</h1>
+    </header>
+    <main class="container mx-auto">
+      <section class="my-10">
+        <div class="grid grid-cols-3 gap-6 text-white">
+          <!-- diposit show -->
+          <div
+            class="bg-green-300 p-8 rounded-lg shadow-xl shadow-green-500/50"
+          >
+            <h4 class="text-2xl font-semibold">Deposit</h4>
+            <h2 class="text-5xl font-bold my-3">
+              $<span id="show-diposit">00</span>
+            </h2>
+          </div>
+
+          <!-- widraw show -->
+          <div class="bg-red-300 p-8 rounded-lg shadow-xl shadow-red-500/50">
+            <h4 class="text-2xl font-semibold">Widraw</h4>
+            <h2 class="text-5xl font-bold my-3">
+              $<span id="show-widraw">00</span>
+            </h2>
+          </div>
+
+          <!-- balance -->
+          <div class="bg-blue-300 p-8 rounded-lg shadow-xl shadow-blue-500/50">
+            <h4 class="text-2xl font-semibold">Balance</h4>
+            <h2 class="text-5xl font-bold my-3">
+              $<span id="show-balance">1280</span>
+            </h2>
+          </div>
+        </div>
+        <div
+          id="balance-error"
+          class="border-2 border-red-300 rounded-lg p-2 mt-10 hidden"
+        >
+          <p class="text-sm text-center">
+            Your balance is low, please diposit some money.
+          </p>
+        </div>
+      </section>
+      <section class="my-10">
+        <div class="grid grid-cols-2 gap-4 text-white">
+          <!-- diposit -->
+          <div
+            class="flex flex-col gap-6 bg-green-300 p-6 rounded-xl shadow-lg shadow-green-500/50"
+          >
+            <h2 class="text-2xl font-semibold">
+              Please Enter your deposit amount
+            </h2>
+            <input
+              type="number"
+              id="diposit-field"
+              placeholder="$ Enter Diposit amount"
+              class="h-12 w-80 border-b-2 border-green-800 p-3 bg-transparent"
+            />
+            <button
+              id="diposit-btn"
+              class="w-40 text-slate-200 font-bold text-xl bg-green-700 px-4 py-2 rounded-lg shadow-lg shadow-green-700/50"
+            >
+              Diposit
+            </button>
+          </div>
+
+          <!-- widraw -->
+          <div
+            class="flex flex-col gap-6 bg-red-300 p-6 rounded-xl shadow-lg shadow-red-500/50"
+          >
+            <h2 class="text-2xl font-semibold">
+              Please Enter your widraw amount
+            </h2>
+            <input
+              type="number"
+              id="widraw-field"
+              placeholder="$ Enter Widraw amount"
+              class="h-12 w-80 border-b-2 border-red-800 p-3 bg-transparent"
+            />
+            <button
+              id="widraw-btn"
+              class="w-40 text-slate-200 font-bold text-xl bg-red-700 px-4 py-2 rounded-lg shadow-lg shadow-green-700/50"
+            >
+              Widraw
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
