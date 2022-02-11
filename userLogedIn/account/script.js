@@ -13,21 +13,30 @@ const widrawtBtn = document.getElementById("widraw-btn");
 // error box
 let balanceError = document.getElementById("balance-error");
 
+// common function
+
+function getInputValue(amount, display) {
+  let inputAmount = parseFloat(amount.value);
+  let currentAmount = parseFloat(display.innerText);
+
+  let total = inputAmount + currentAmount;
+
+  display.innerText = total;
+  amount.value = "";
+  return total;
+}
+
 // diposit section
 dipositBtn.addEventListener("click", function () {
   if (dipositField.value == "") {
     return;
   }
-  // update deposit amount
-  let dipositAmount = parseFloat(dipositField.value);
-  let currentDipositAmount = parseFloat(showDiposit.innerText);
-  let totalDipositAmount = dipositAmount + currentDipositAmount;
-  showDiposit.innerText = totalDipositAmount;
-  dipositField.value = "";
+
+  let totalDiposit = getInputValue(dipositField, showDiposit);
 
   // update balance amount
   let currentBalance = parseFloat(showBalance.innerText);
-  let totalBalance = currentBalance + dipositAmount;
+  let totalBalance = currentBalance + totalDiposit;
   showBalance.innerText = totalBalance;
 });
 
@@ -37,25 +46,18 @@ widrawtBtn.addEventListener("click", function () {
   if (widrawField.value == "") {
     return;
   }
-  let widrawAmount = parseFloat(widrawField.value);
-  let currentWidrawAmount = parseFloat(showWidraw.innerText);
 
   let currentBalance = parseFloat(showBalance.innerText);
+  let widrawAmount = parseFloat(widrawField.value);
 
   if (currentBalance < widrawAmount) {
     balanceError.style.display = "block";
     return;
-  } else {
-    // update widraw
-    let totalWidrawAmount = widrawAmount + currentWidrawAmount;
-    showWidraw.innerText = totalWidrawAmount;
-    widrawField.value = "";
-
-    // update balance
-    let totalBalance = currentBalance - totalWidrawAmount;
-    showBalance.innerText = totalBalance;
-
-    // hide error
-    balanceError.style.display = "none";
   }
+
+  let totalWidraw = getInputValue(widrawField, showWidraw);
+
+  let totalBalance = currentBalance - totalWidraw;
+  showBalance.innerText = totalBalance;
+  balanceError.style.display = "none";
 });
